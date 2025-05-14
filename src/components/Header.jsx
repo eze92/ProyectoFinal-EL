@@ -20,10 +20,10 @@ const Header = () => {
           <Nav.Link as={Link} to="/infaltables" className="me-3">Infaltables</Nav.Link>
 
           <div className="d-flex align-items-center">
-            <Button variant="outline-light" as={Link} to="/administracion" className="me-2">
+            <Button variant="outline-light bg-danger text-white" as={Link} to="/administracion" className="me-2">
               Administración
             </Button>
-            <Link to="/carrito" className="text-white">
+            <Link to="/carrito" className="text-muted">
               <FontAwesomeIcon icon={faShoppingCart} size="lg" />
             </Link>
           </div>

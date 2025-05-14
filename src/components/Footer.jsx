@@ -7,10 +7,10 @@ const Footer = () => {
   return (
     <footer className="bg-info text-black text-center py-4 mt-4">
       <Container>
-        <Row>
-          <Col md={6}>
-            <p className="mb-0 text-center">Caseros Buenos Aires Argentina CP: B1678</p>
-            <p className="mb-0 text-center">Copyright 2025 :Diseño y Programación: Ezequiel Ledesma</p>
+        <Row >
+        <Col md={6} className="text-center d-flex flex-column justify-content-center align-items-center">
+            <p >Caseros Buenos Aires Argentina CP: B1678</p>
+            <p>Copyright 2025 :Diseño y Programación: Ezequiel Ledesma</p>
         </Col>
           <Col md={6}>
             <div>

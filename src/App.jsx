@@ -14,7 +14,9 @@ function App() {
     fetch('https://fakestoreapi.com/products/')
       .then((res) => res.json())
       .then((data) => {
-        setProductos(data); // Guardar los productos en el estado
+        // Filtrar productos por categoría "electronics"
+        const productosFiltrados = data.filter((producto) => producto.category === 'electronics');
+        setProductos(productosFiltrados); // Guardar los productos filtrados en el estado
         setLoading(false);
       })
       .catch((err) => {

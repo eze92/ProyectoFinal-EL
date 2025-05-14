@@ -1,10 +1,11 @@
 import React from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
 
+//se agregan las cards
 const Home = ({ productos, loading }) => {
   return (
     <div className="container">
-      <h1>Productos</h1>
+      <h1>Productos Mas Nuevos</h1>
       {loading ? (
         <h2>Cargando Imágenes...</h2>
       ) : (
