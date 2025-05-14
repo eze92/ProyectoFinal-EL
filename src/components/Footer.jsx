@@ -8,11 +8,9 @@ const Footer = () => {
     <footer className="bg-info text-black text-center py-4 mt-4">
       <Container>
         <Row >
-        <Col md={6} className="text-center d-flex flex-column justify-content-center align-items-center">
             <p >Caseros Buenos Aires Argentina CP: B1678</p>
             <p>Copyright 2025 :Diseño y Programación: Ezequiel Ledesma</p>
-        </Col>
-          <Col md={6}>
+        
             <div>
               <a href="#" className="text-white me-3">
                 <i className="fa fa-facebook fa-2x"></i>
@@ -24,7 +22,7 @@ const Footer = () => {
                 <i className="fa fa-instagram fa-2x"></i>
               </a>
             </div>
-          </Col>
+          
         </Row>
       </Container>
     </footer>
