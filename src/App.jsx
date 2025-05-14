@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react';
+import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from './components/Footer'; 
+import Home from './components/Home';
+import Header from './components/Header';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [productos, setProductos] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Hacer el pedido a la API de FakeStore
+    fetch('https://fakestoreapi.com/products/')
+      .then((res) => res.json())
+      .then((data) => {
+        setProductos(data); // Guardar los productos en el estado
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('Error de carga de API', err);
+        setLoading(false);
+      });
+  }, []);
+
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* Aquí puedes agregar más rutas */}
+      </Routes>
+      <Footer />
+    </Router>
+    
+  );
 }
 
 export default App
