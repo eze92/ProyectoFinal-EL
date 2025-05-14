@@ -9,9 +9,9 @@ const Footer = () => {
       <Container>
         <Row>
           <Col md={6}>
-            <p className="mb-0">Caseros Buenos Aires Argentina CP: B1678 </p>
-            <p className="mb-0">Copyright 2025 :Diseño y Programación: Ezequiel Ledesma </p>
-          </Col>
+            <p className="mb-0 text-center">Caseros Buenos Aires Argentina CP: B1678</p>
+            <p className="mb-0 text-center">Copyright 2025 :Diseño y Programación: Ezequiel Ledesma</p>
+        </Col>
           <Col md={6}>
             <div>
               <a href="#" className="text-white me-3">

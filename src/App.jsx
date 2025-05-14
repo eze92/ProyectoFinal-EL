@@ -28,8 +28,8 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        {/* Aquí puedes agregar más rutas */}
+        <Route path="/" element={<Home productos={productos} loading={loading} />} />
+        <Route path="/Home" element={<Home productos={productos} loading={loading} />} />
       </Routes>
       <Footer />
     </Router>
