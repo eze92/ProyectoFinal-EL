@@ -7,6 +7,9 @@ import Header from './components/Header';
 import Ofertas from './components/Ofertas';
 import Login from './pages/Login';
 import Perfil from './pages/Perfil';
+import RutaProtegida from './components/RutaProtegida';
+import Administracion from './pages/Administracion';
+
 
 function App() {
   const [productos, setProductos] = useState([]);
@@ -50,6 +53,12 @@ function App() {
         <Route path="/Home" element={<Home productos={productos} loading={loading} />} />
         <Route path="/Ofertas" element={<Ofertas productos={productos} loading={loading} />} /> 
         <Route path="/login" element={<Login />} />
+        <Route path="/perfil/:id" element={
+          <RutaProtegida><Perfil /></RutaProtegida>
+        } />
+        <Route path="/admin" element={
+          <RutaProtegida><Administracion /></RutaProtegida>
+        } />
       </Routes>
       <Footer />
     </Router>
