@@ -10,13 +10,26 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Hacer el pedido a la API de FakeStore
-    fetch('https://fakestoreapi.com/products/')
+    // Hacer el pedido a la API de Pokémon TCG
+    fetch('https://api.pokemontcg.io/v2/cards?pageSize=50', {
+      headers: {
+        'X-Api-Key': 'a46093c9-caec-4f2f-b2cc-15d55e6776d2', // Clave de autenticación
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
-        // Filtrar productos por categoría "electronics"
-        const productosFiltrados = data.filter((producto) => producto.category === 'electronics');
-        setProductos(productosFiltrados); // Guardar los productos filtrados en el estado
+        // Transformar los datos para que sean compatibles con el componente Home
+        const productosTransformados = data.data.map((card) => ({
+          id: card.id,
+          title: card.name,
+          image: card.images.large, // URL de la imagen grande
+          // Intenta obtener el precio de TCGPlayer o Cardmarket, si existe
+          price:
+          card.tcgplayer?.prices?.normal?.market ||
+          card.cardmarket?.prices?.averageSellPrice ||
+          'N/A',
+        }));
+        setProductos(productosTransformados); // Guardar los productos transformados en el estado
         setLoading(false);
       })
       .catch((err) => {

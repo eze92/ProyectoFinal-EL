@@ -5,7 +5,7 @@ import { Row, Col, Card } from 'react-bootstrap';
 const Home = ({ productos, loading }) => {
   return (
     <div className="container">
-      <h1>Productos Mas Nuevos</h1>
+      <h1>Cartas</h1>
       {loading ? (
         <h2>Cargando Imágenes...</h2>
       ) : (
