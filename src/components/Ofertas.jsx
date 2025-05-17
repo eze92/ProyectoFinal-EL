@@ -8,7 +8,9 @@ const Ofertas = ({ productos, loading,onAgregarAlCarrito }) => {
     if (a.price === 'N/A') return 1;
     if (b.price === 'N/A') return -1;
     return a.price - b.price;
-  });
+  })
+  .slice(0, 30); // Solo las 20 más baratas
+  
   return (
     <div className="container">
     <h2>Mas Baratas</h2>
