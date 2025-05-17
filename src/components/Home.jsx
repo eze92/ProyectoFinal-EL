@@ -1,8 +1,8 @@
 import React from 'react';
-import { Row, Col, Card } from 'react-bootstrap';
+import { Row, Col, Card , Button} from 'react-bootstrap';
 
 //se agregan las cards
-const Home = ({ productos, loading }) => {
+const Home = ({ productos, loading,onAgregarAlCarrito }) => {
   return (
     <div className="container">
       <h1>Cartas</h1>
@@ -24,6 +24,17 @@ const Home = ({ productos, loading }) => {
                   <Card.Text>
                     <strong>Precio: ${producto.price}</strong>
                   </Card.Text>
+
+                  {/* Botón para agregar al carrito junto a div para centrar el boton */}
+                  <div className="d-flex justify-content-center">
+                    <Button
+                      variant="success" 
+                      onClick={() => onAgregarAlCarrito(producto)}
+                    >
+                      Agregar al carrito
+                    </Button>
+                  </div>
+
                 </Card.Body>
               </Card>
             </Col>
