@@ -8,7 +8,9 @@ const Home = ({ productos, loading,onAgregarAlCarrito }) => {
     if (a.price === 'N/A') return 1;
     if (b.price === 'N/A') return -1;
     return b.price - a.price;
-  });
+  })
+  .slice(0, 100); // Solo las 100 más baratas
+
   return (
     <div className="container">
       <h2>Top 100 cartas mas caras</h2>

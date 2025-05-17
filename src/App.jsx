@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     // Hacer el pedido a la API de Pokémon TCG
-    fetch('https://api.pokemontcg.io/v2/cards?pageSize=100', {
+    fetch('https://api.pokemontcg.io/v2/cards', {
       headers: {
         'X-Api-Key': 'a46093c9-caec-4f2f-b2cc-15d55e6776d2', // Clave de autenticación
       },
