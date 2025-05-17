@@ -5,11 +5,11 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => {
   return (
-    <footer className="bg-info text-black text-center py-4 mt-4">
+    <footer className="bg-black text-white text-center py-4 mt-4">
       <Container>
         <Row >
-            <p >Caseros Buenos Aires Argentina CP: B1678</p>
-            <p>Copyright 2025 :Diseño y Programación: Ezequiel Ledesma</p>
+            <p>Caseros Buenos Aires Argentina CP: B1678</p>
+            <p>Copyright 2025 : Ezequiel Ledesma</p>
         
             <div>
               <a href="#" className="text-white me-3">

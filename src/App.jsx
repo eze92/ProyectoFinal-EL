@@ -52,9 +52,6 @@ function App() {
         <Route path="/Ofertas" element={<Ofertas productos={productos} loading={loading} />} /> 
         <Route path="/" element={<Inicio />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/perfil/:id" element={
-          <RutaProtegida><Perfil /></RutaProtegida>
-        } />
       </Routes>
       <Footer />
     </Router>

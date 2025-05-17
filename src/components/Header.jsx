@@ -20,9 +20,11 @@ const Header = () => {
           <Nav.Link as={Link} to="/Set" className="me-3">Set</Nav.Link>
 
           <div className="d-flex align-items-center">
-            <Button variant="outline-light bg-danger text-white" as={Link} to="/administracion" className="me-2">
+             {/* Botón de inicio de sesión */}
+            <Button variant="outline-light bg-danger text-white" as={Link} to="/login" className="me-2">
               Login
             </Button>
+             {/* Carrito de compras */}
             <Link to="/carrito" className="text-muted">
               <FontAwesomeIcon icon={faShoppingCart} size="lg" />
             </Link>
