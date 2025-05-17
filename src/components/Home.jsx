@@ -3,14 +3,20 @@ import { Row, Col, Card , Button} from 'react-bootstrap';
 
 //se agregan las cards
 const Home = ({ productos, loading,onAgregarAlCarrito }) => {
+  // Ordenar de mayor a menor precio, los 'N/A' van al final
+  const productosOrdenados = [...productos].sort((a, b) => {
+    if (a.price === 'N/A') return 1;
+    if (b.price === 'N/A') return -1;
+    return b.price - a.price;
+  });
   return (
     <div className="container">
-      <h1>Cartas</h1>
+      <h2>Top 100 cartas mas caras</h2>
       {loading ? (
         <h2>Cargando Imágenes...</h2>
       ) : (
         <Row>
-          {productos.map((producto) => (
+          {productosOrdenados.map((producto) => (
             <Col key={producto.id} md={3}>
               <Card className="m-2">
                 <Card.Img

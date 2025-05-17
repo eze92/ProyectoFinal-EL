@@ -21,7 +21,7 @@ const Header = () => {
 
           <div className="d-flex align-items-center">
             <Button variant="outline-light bg-danger text-white" as={Link} to="/administracion" className="me-2">
-              Administración
+              Login
             </Button>
             <Link to="/carrito" className="text-muted">
               <FontAwesomeIcon icon={faShoppingCart} size="lg" />

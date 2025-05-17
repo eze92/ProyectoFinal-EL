@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './components/Footer'; 
 import Home from './components/Home';
 import Header from './components/Header';
+import Ofertas from './components/Ofertas';
 
 function App() {
   const [productos, setProductos] = useState([]);
@@ -11,7 +12,7 @@ function App() {
 
   useEffect(() => {
     // Hacer el pedido a la API de Pokémon TCG
-    fetch('https://api.pokemontcg.io/v2/cards?pageSize=50', {
+    fetch('https://api.pokemontcg.io/v2/cards?pageSize=100', {
       headers: {
         'X-Api-Key': 'a46093c9-caec-4f2f-b2cc-15d55e6776d2', // Clave de autenticación
       },
@@ -45,6 +46,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home productos={productos} loading={loading} />} />
         <Route path="/Home" element={<Home productos={productos} loading={loading} />} />
+        <Route path="/Ofertas" element={<Ofertas productos={productos} loading={loading} />} />
       </Routes>
       <Footer />
     </Router>
