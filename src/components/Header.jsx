@@ -11,7 +11,7 @@ const Header = () => {
       <Container>       
         <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
           <FontAwesomeIcon icon={faGamepad} size="2x" className="me-2" />
-          <span>TGC Pokemon Atrapalas a todas!!</span>
+          <span>TGC Pokemon Atrapalas a Todas!!</span>
         </Navbar.Brand>
 
         <Nav className="ms-auto align-items-center">

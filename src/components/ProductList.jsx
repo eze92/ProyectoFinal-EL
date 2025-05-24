@@ -37,7 +37,7 @@ const ProductList = ({ sortType, typeFilter }) => {
   }, [typeFilter]);
 
   const handleAgregarAlCarrito = (carta) => {
-    alert(`Producto ${carta.title} agregado al carrito`);
+    alert(`Carta ${carta.title} agregado al carrito`);
   };
 
   if (loading) {
