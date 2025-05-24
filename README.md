@@ -22,6 +22,6 @@ https://project-react-tgcpokemon-eledesma.netlify.app/
 - Vite
 - React Router
 - Bootstrap
-
+- Sweetalert2
 
 
