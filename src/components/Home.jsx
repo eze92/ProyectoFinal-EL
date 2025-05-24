@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ProductList from './ProductList';
 
-const types = ['Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Fighting', 'Darkness', 'Metal', 'Fairy', 'Dragon', 'Colorless'];
+const types = ['Fire', 'Water', 'Grass', 'Lightning', 'Psychic', 'Fighting', 'Darkness', 'Metal', 'Fairy', 'Dragon', 'Colorless'];
 
 const Home = () => {
   const [selectedType, setSelectedType] = useState('');
