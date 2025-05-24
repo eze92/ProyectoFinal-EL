@@ -8,6 +8,7 @@ const ProductCard = ({ producto, onAgregarAlCarrito }) => (
       src={producto.image}
       alt={producto.title}
       style={{ height: '200px', objectFit: 'contain' }}
+      loading="lazy" // <-- Esto habilita lazy loading
     />
     <Card.Body className="d-flex flex-column">
       <Card.Title>{producto.title}</Card.Title>

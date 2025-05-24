@@ -7,9 +7,9 @@ const ProductList = ({ sortType, typeFilter }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let url = 'https://api.pokemontcg.io/v2/cards';
+    let url = 'https://api.pokemontcg.io/v2/cards?pageSize=100';
     if (typeFilter) {
-      url += `?q=types:${typeFilter}`;
+      url += `&q=types:${typeFilter}`;
     }
     fetch(url, {
       headers: {
@@ -21,7 +21,7 @@ const ProductList = ({ sortType, typeFilter }) => {
         const cartasTransformadas = data.data.map((card) => ({
           id: card.id,
           title: card.name,
-          image: card.images.large,
+          image: card.images.small,
           price:
             card.tcgplayer?.prices?.normal?.market ||
             card.cardmarket?.prices?.averageSellPrice ||
@@ -48,7 +48,7 @@ const ProductList = ({ sortType, typeFilter }) => {
   let cartasOrdenadas = [...cartas].filter(c => c.price !== 'N/A');
   if (sortType === 'cheap') {
     cartasOrdenadas.sort((a, b) => a.price - b.price);
-    cartasOrdenadas = cartasOrdenadas.slice(0, 100); // 30 más baratas
+    cartasOrdenadas = cartasOrdenadas.slice(0, 30); // 30 más baratas
   } else if (sortType === 'expensive') {
     cartasOrdenadas.sort((a, b) => b.price - a.price);
     cartasOrdenadas = cartasOrdenadas.slice(0, 100); // 100 más caras
