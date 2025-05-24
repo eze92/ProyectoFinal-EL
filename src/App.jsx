@@ -9,6 +9,7 @@ import Perfil from './pages/Perfil';
 import RutaProtegida from './components/RutaProtegida';
 import Administracion from './pages/Administracion';
 
+
 function App() {
   return (
     <Router>

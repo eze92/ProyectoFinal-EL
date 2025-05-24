@@ -7,6 +7,7 @@ const Home = () => {
   const [selectedType, setSelectedType] = useState('');
 
   return (
+    <div className="container" style={{ background: '#f5f7fa', borderRadius: '12px', padding: '2rem' }}>
     <div className="container">
       <h2>Top 100 cartas más caras</h2>
       <div className="mb-3">
@@ -29,6 +30,7 @@ const Home = () => {
       </div>
       <ProductList sortType="expensive" typeFilter={selectedType} />
     </div>
+  </div>
   );
 };
 

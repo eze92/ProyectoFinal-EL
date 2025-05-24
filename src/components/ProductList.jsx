@@ -48,7 +48,7 @@ const ProductList = ({ sortType, typeFilter }) => {
   let cartasOrdenadas = [...cartas].filter(c => c.price !== 'N/A');
   if (sortType === 'cheap') {
     cartasOrdenadas.sort((a, b) => a.price - b.price);
-    cartasOrdenadas = cartasOrdenadas.slice(0, 30); // 30 más baratas
+    cartasOrdenadas = cartasOrdenadas.slice(0, 100); // 30 más baratas
   } else if (sortType === 'expensive') {
     cartasOrdenadas.sort((a, b) => b.price - a.price);
     cartasOrdenadas = cartasOrdenadas.slice(0, 100); // 100 más caras
