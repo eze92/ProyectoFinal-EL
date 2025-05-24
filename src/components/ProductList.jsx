@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import ProductCard from './ProductCard';
+import Swal from 'sweetalert2';
 
 const ProductList = ({ sortType, typeFilter }) => {
   const [cartas, setCartas] = useState([]);
@@ -37,8 +38,16 @@ const ProductList = ({ sortType, typeFilter }) => {
   }, [typeFilter]);
 
   const handleAgregarAlCarrito = (carta) => {
-    alert(`Carta ${carta.title} agregado al carrito`);
-  };
+    Swal.fire({
+    title: '¡Agregado!',
+    text: `La carta ${carta.title} fue agregada al carrito.`,
+    icon: 'success',
+    timer: 2000,
+    showConfirmButton: false,
+    toast: true,
+    position: 'top-end',
+  });
+};
 
   if (loading) {
     return <div>Loading...</div>;
