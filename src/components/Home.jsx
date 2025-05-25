@@ -15,7 +15,7 @@ const Home = () => {
 
       <h2>Top Cartas más Caras</h2>
       <div className="mb-3">
-        <span>Filtrar por tipo: </span>
+        <span>Filtrar Tipo de Carta: </span>
         {types.map((type) => (
           <button
             key={type}
