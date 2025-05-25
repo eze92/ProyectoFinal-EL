@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ProductList from './ProductList';
+import Banner from './Banner';
 
 const types = ['Fire', 'Water', 'Grass', 'Lightning', 'Psychic', 'Fighting', 'Darkness', 'Metal', 'Fairy', 'Dragon', 'Colorless'];
 
@@ -9,6 +10,9 @@ const Home = () => {
   return (
     <div className="container" style={{ background: '#f5f7fa', borderRadius: '12px', padding: '2rem' }}>
     <div className="container">
+      
+      <Banner />
+
       <h2>Top Cartas más Caras</h2>
       <div className="mb-3">
         <span>Filtrar por tipo: </span>
