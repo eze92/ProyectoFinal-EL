@@ -1,12 +1,20 @@
 import { useNavigate } from 'react-router-dom';
 import { Container, Form, Button } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 
 export default function Login() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
     localStorage.setItem('auth', 'true');
-    navigate('/perfil/usuario123');
+    Swal.fire({
+      icon: 'success',
+      title: '¡Bienvenido!',
+      text: 'Has iniciado sesión correctamente.',
+      confirmButtonColor: '#3085d6'
+    }).then(() => {
+      navigate('/perfil/usuario123');
+    });
   };
 
   
