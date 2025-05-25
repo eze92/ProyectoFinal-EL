@@ -17,4 +17,10 @@ La pagina se puede ver en el siguiente enlace https://project-react-tgcpokemon-e
 - Sweetalert2
 - Font Awesome
 
+## Instalación
+
+- Clonar el repositorio en tu maquina local.
+- Abrir cmd o terminal en visual studio code y pararnos en ubicación del repositorio descargado.
+- Ejecutar el comando npm install para descargar modulos y dependencias necesarias para correr el aplicativo
+- Ejecutar el comando npm run dev para ver el proyecto funcionando
 
