@@ -20,13 +20,16 @@ export default function Login() {
 
   return (
     <div
+      className="container"
       style={{
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #e0e7ff 0%, #f5f7fa 100%)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
+      background: '#f5f7fa',
+      borderRadius: '12px',
+      padding: '2rem',
+      minHeight: '80vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}
     >
       <Card 
         style={{ 
