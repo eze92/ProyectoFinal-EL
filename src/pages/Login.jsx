@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button, Card } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 
 export default function Login() {
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     localStorage.setItem('auth', 'true');
     Swal.fire({
       icon: 'success',
@@ -17,22 +18,41 @@ export default function Login() {
     });
   };
 
-  
-
   return (
-    <Container className="mt-5" style={{ maxWidth: 400 }}>
-      <h2>Iniciar sesión</h2>
-      <Form>
-        <Form.Group className="mb-3">
-          <Form.Label>Usuario</Form.Label>
-          <Form.Control type="text" />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Contraseña</Form.Label>
-          <Form.Control type="password" />
-        </Form.Group>
-        <Button variant="primary" onClick={handleLogin}>Entrar</Button>
-      </Form>
-    </Container>
+    <div
+      style={{
+        minHeight: '100vh',
+        background: 'linear-gradient(135deg, #e0e7ff 0%, #f5f7fa 100%)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
+    >
+      <Card 
+        style={{ 
+        width: 350, 
+        padding: '2rem', 
+        borderRadius: 16, 
+        boxShadow: '0 4px 24px rgba(0,0,0,0.10)' ,
+        backgroundColor: '#E6A15E'}}>
+
+        <Card.Body>
+          <h2 className="text-center mb-4">Iniciar Sesión</h2>
+          <Form onSubmit={handleLogin}>
+            <Form.Group className="mb-3">
+              <Form.Label><b>Usuario</b></Form.Label>
+              <Form.Control type="text" required />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label><b>Contraseña</b></Form.Label>
+              <Form.Control type="password" required />
+            </Form.Group>
+            <Button variant="primary" type="submit" className="w-100">
+              Entrar
+            </Button>
+          </Form>
+        </Card.Body>
+      </Card>
+    </div>
   );
 }
