@@ -6,7 +6,7 @@ La web lista cartas de TCG Pokemon y permite agregarlos a un carrito para simula
 
 ## Link
 
-La pagina se puede ver en el siguiente enlace https://project-react-tgcpokemon-eledesma.netlify.app/
+La pagina se puede ver en el siguiente enlace https://project-react-tcgpokemon-eledesma.netlify.app/
 
 ## Tecnologías/Recursos Utilizadas
 

@@ -9,6 +9,7 @@ import Perfil from './pages/Perfil';
 import RutaProtegida from './components/RutaProtegida';
 import Administracion from './pages/Administracion';
 import Carrito from './pages/Carrito';
+import ComoJugar from './pages/ComoJugar';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <RutaProtegida><Administracion /></RutaProtegida>
         } />
         <Route path="/carrito" element={<Carrito />} />
+        <Route path="/comojugar" element={<ComoJugar />} />
       </Routes>
       <Footer />
     </Router>
