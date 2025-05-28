@@ -8,7 +8,7 @@ import Login from './pages/Login';
 import Perfil from './pages/Perfil';
 import RutaProtegida from './components/RutaProtegida';
 import Administracion from './pages/Administracion';
-
+import Carrito from './pages/Carrito';
 
 function App() {
   return (
@@ -25,6 +25,7 @@ function App() {
         <Route path="/admin" element={
           <RutaProtegida><Administracion /></RutaProtegida>
         } />
+        <Route path="/carrito" element={<Carrito />} />
       </Routes>
       <Footer />
     </Router>
