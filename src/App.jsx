@@ -10,9 +10,13 @@ import RutaProtegida from './components/RutaProtegida';
 import Administracion from './pages/Administracion';
 import Carrito from './pages/Carrito';
 import ComoJugar from './pages/ComoJugar';
+import { CartProvider } from './components/CardContex';
 
 function App() {
   return (
+    <CartProvider>
+      
+  
     <Router>
       <Header />
       <Routes>
@@ -31,6 +35,7 @@ function App() {
       </Routes>
       <Footer />
     </Router>
+    </CartProvider>
   );
 }
 
