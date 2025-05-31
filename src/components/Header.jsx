@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button, Badge } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { faGamepad } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faGamepad } from '@fortawesome/free-solid-svg-icons';
+import { CartContext } from './CardContex';
 
 const Header = () => {
+  const { carrito } = useContext(CartContext);
+  const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+
   return (
     <Navbar bg="primary" variant="dark" expand="lg" className="mb-4">
-      <Container>       
+      <Container>
         <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
           <FontAwesomeIcon icon={faGamepad} size="2x" className="me-2" />
-          <span>PokéBazaar Mercado especializado en cartas </span>
+          <span>PokéBazaar Mercado Especializado en Cartas </span>
         </Navbar.Brand>
 
         <Nav className="ms-auto align-items-center">
@@ -20,13 +23,19 @@ const Header = () => {
           <Nav.Link as={Link} to="/comojugar" className="me-3">Como Jugar</Nav.Link>
 
           <div className="d-flex align-items-center">
-             {/* Botón de inicio de sesión */}
+            {/* Botón de inicio de sesión */}
             <Button variant="outline-light bg-danger text-white" as={Link} to="/login" className="me-2">
               Login
             </Button>
-             {/* Carrito de compras */}
-            <Link to="/carrito" className="text-muted">
+            {/* Carrito de compras */}
+            <Link to="/carrito" className="text-muted position-relative">
               <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+              {/*maneja el total en el icono del carrito*/}
+              {totalItems > 0 && (
+                <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle">
+                  {totalItems}
+                </Badge>
+              )}
             </Link>
           </div>
         </Nav>
