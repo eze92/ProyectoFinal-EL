@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState ,useContext} from 'react';
 import { Row, Col } from 'react-bootstrap';
 import ProductCard from './ProductCard';
 import Swal from 'sweetalert2';
+import { CartContext } from './CardContex';
+
 
 const ProductList = ({ sortType, typeFilter }) => {
   const [cartas, setCartas] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { agregarAlCarrito } = useContext(CartContext);
 
   useEffect(() => {
     let url = 'https://api.pokemontcg.io/v2/cards?pageSize=100';
@@ -38,6 +41,7 @@ const ProductList = ({ sortType, typeFilter }) => {
   }, [typeFilter]);
 
   const handleAgregarAlCarrito = (carta) => {
+    agregarAlCarrito(carta); // agrega al carrito usando el contexto
     Swal.fire({
     title: '¡Agregado!',
     text: `La carta ${carta.title} fue agregada al carrito.`,
