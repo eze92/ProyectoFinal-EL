@@ -1,9 +1,8 @@
 import React from 'react';
+import { CartContext } from './CartContext';
 
 function Carrito() {
-  // Aquí podrías obtener los productos del carrito desde el estado global o localStorage
-  const productos = []; // Simulación: carrito vacío
-
+  
   return (
     <div className="container" style={{ minHeight: '60vh', padding: '2rem' }}>
       {productos.length === 0 ? (
