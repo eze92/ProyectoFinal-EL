@@ -1,5 +1,8 @@
 # ProyectoFinal-EL / TCG Pokemon 
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/50524954-6da3-4a04-bbcf-b8935364dc13/deploy-status)](https://app.netlify.com/projects/project-react-tcgpokemon-eledesma/deploys)
+
+
 Proyecto de e-commerce sencillo que se utiliza para el curso de React en Talento Tech
 
 La web lista cartas de TCG Pokemon y permite agregarlos a un carrito para simular una compra. 
