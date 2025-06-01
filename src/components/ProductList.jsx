@@ -12,14 +12,14 @@ import { CartContext } from './CardContex';
  * - currentPage: número de página actual
  * - itemsPerPage: cantidad de cartas por página
  */
-const ProductList = ({ sortType, typeFilter, currentPage = 1, itemsPerPage = 12 }) => {
+const ProductList = ({ sortType, typeFilter, currentPage = 1, itemsPerPage = 20 }) => {
   const [cartas, setCartas] = useState([]);
   const [loading, setLoading] = useState(true);
   const { agregarAlCarrito } = useContext(CartContext);
 
   // Trae las cartas desde la API cada vez que cambia el filtro de tipo
   useEffect(() => {
-    let url = 'https://api.pokemontcg.io/v2/cards?pageSize=100';
+    let url = 'https://api.pokemontcg.io/v2/cards?pageSize=120';
     if (typeFilter) {
       url += `&q=types:${typeFilter}`;
     }
@@ -70,8 +70,10 @@ const ProductList = ({ sortType, typeFilter, currentPage = 1, itemsPerPage = 12 
   // Ordenar según sortType  y filtra las cartas según el tipo de orden
   let cartasOrdenadas = [...cartas].filter(c => c.price !== 'N/A');
   if (sortType === 'cheap') {
-    cartasOrdenadas.sort((a, b) => a.price - b.price);
-    cartasOrdenadas = cartasOrdenadas.slice(0, 30); // 30 más baratas
+    // Solo cartas con precio <= 1 (oferta)
+    cartasOrdenadas = cartasOrdenadas.filter(c => Number(c.price) <= 5);
+    //cartasOrdenadas.sort((a, b) => a.price - b.price);
+    cartasOrdenadas = cartasOrdenadas.slice(0, 50); // 30 más baratas
   } else if (sortType === 'expensive') {
     cartasOrdenadas.sort((a, b) => b.price - a.price);
     cartasOrdenadas = cartasOrdenadas.slice(0, 100); // 100 más caras

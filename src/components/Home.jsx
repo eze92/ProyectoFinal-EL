@@ -9,7 +9,7 @@ const Home = () => {
   const [selectedType, setSelectedType] = useState('');
   //para paginacion
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = 20;
 
   // Scroll automático al cambiar de página
   useEffect(() => {
