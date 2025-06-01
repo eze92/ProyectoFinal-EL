@@ -15,27 +15,30 @@ import { CartProvider } from './components/CardContex';
 function App() {
   return (
     <CartProvider>
-      
-  
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Home" element={<Home />} />
-        <Route path="/Ofertas" element={<Ofertas />} /> 
-        <Route path="/login" element={<Login />} />
-        <Route path="/perfil/:id" element={
-          <RutaProtegida><Perfil /></RutaProtegida>
-        } />
-        <Route path="/admin" element={
-          <RutaProtegida><Administracion /></RutaProtegida>
-        } />
-        <Route path="/carrito" element={<Carrito />} />
-        <Route path="/comojugar" element={<ComoJugar />} />
-      </Routes>
-      <Footer />
-    </Router>
+      <div className="d-flex flex-column min-vh-100">
+        <Router>
+          <Header />
+          <div className="flex-grow-1">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/Home" element={<Home />} />
+              <Route path="/Ofertas" element={<Ofertas />} /> 
+              <Route path="/login" element={<Login />} />
+              <Route path="/perfil/:id" element={
+                <RutaProtegida><Perfil /></RutaProtegida>
+              } />
+              <Route path="/admin" element={
+                <RutaProtegida><Administracion /></RutaProtegida>
+              } />
+              <Route path="/carrito" element={<Carrito />} />
+              <Route path="/comojugar" element={<ComoJugar />} />
+            </Routes>
+          </div>
+          <Footer />
+        </Router>
+      </div>
     </CartProvider>
+  
   );
 }
 

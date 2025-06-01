@@ -18,7 +18,7 @@ const Carrito = () => {
 
   if (carrito.length === 0) {
     return (
-      <Container className="mt-4 text-center">
+      <Container className="mt-4 text-center" style={{ minHeight: '70vh' }}>
         <h4>No hay productos agregados al carrito.</h4>
         <img
           src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png"

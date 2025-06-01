@@ -5,10 +5,6 @@ import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg
 
 const Footer = () => {
   return (
-    <div className="d-flex flex-column min-vh-100">  {/* Contenedor envolvente */}
-      <main className="flex-grow-1"> {/* Asegura que el contenido se expanda */}
-        
-      </main>
       <footer className="bg-black text-white text-center py-4 mt-auto"> {/* `mt-auto` fuerza el footer abajo */}
         <Container>
           <Row className="align-items-center">
@@ -33,7 +29,6 @@ const Footer = () => {
           </Row>
         </Container>
       </footer>
-    </div>
   );
 };
 
