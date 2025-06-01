@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import ProductList from './ProductList';
 import Banner from './Banner';
 
@@ -11,6 +11,10 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
 
+  // Scroll automático al cambiar de página
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
 
   // Para saber cuántas cartas hay en total según el filtro y orden, puedes calcularlo aquí si tienes acceso a los datos.
   // Si no, puedes calcular el total en ProductList y pasarlo a Home mediante un callback o prop.
