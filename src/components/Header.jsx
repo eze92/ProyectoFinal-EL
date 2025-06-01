@@ -16,29 +16,35 @@ const Header = () => {
           <FontAwesomeIcon icon={faGamepad} size="2x" className="me-2" />
           <span>PokéBazar Mercado Especializado en Cartas </span>
         </Navbar.Brand>
+        {/* Botón hamburguesa con texto "Menú" visible solo en pantallas chicas */}
+        <Navbar.Toggle aria-controls="basic-navbar-nav">
+          <span className="d-lg-none ms-2">Menú</span>
+        </Navbar.Toggle>
+        {/* Collapse para menú responsive */}
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto align-items-center">
+            <Nav.Link as={Link} to="/" className="me-3">Home</Nav.Link>
+            <Nav.Link as={Link} to="/ofertas" className="me-3">Ofertas</Nav.Link>
+            <Nav.Link as={Link} to="/comojugar" className="me-3">Como Jugar</Nav.Link>
 
-        <Nav className="ms-auto align-items-center">
-          <Nav.Link as={Link} to="/" className="me-3">Home</Nav.Link>
-          <Nav.Link as={Link} to="/ofertas" className="me-3">Ofertas</Nav.Link>
-          <Nav.Link as={Link} to="/comojugar" className="me-3">Como Jugar</Nav.Link>
-
-          <div className="d-flex align-items-center">
-            {/* Botón de inicio de sesión */}
-            <Button variant="outline-light bg-danger text-white" as={Link} to="/login" className="me-2">
-              Login
-            </Button>
-            {/* Carrito de compras */}
-            <Link to="/carrito" className="text-muted position-relative">
-              <FontAwesomeIcon icon={faShoppingCart} size="lg" />
-              {/*maneja el total en el icono del carrito*/}
-              {totalItems > 0 && (
-                <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle">
-                  {totalItems}
-                </Badge>
-              )}
-            </Link>
-          </div>
-        </Nav>
+            <div className="d-flex align-items-center">
+              {/* Botón de inicio de sesión */}
+              <Button variant="outline-light bg-danger text-white" as={Link} to="/login" className="me-2">
+                Login
+              </Button>
+              {/* Carrito de compras */}
+              <Link to="/carrito" className="text-muted position-relative">
+                <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+                {/*maneja el total en el icono del carrito*/}
+                {totalItems > 0 && (
+                  <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle">
+                    {totalItems}
+                  </Badge>
+                )}
+              </Link>
+            </div>
+          </Nav>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );
