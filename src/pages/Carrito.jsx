@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Container, Table, Button } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 import { CartContext } from '../components/CardContex';
 
 const Carrito = () => {
@@ -7,6 +8,10 @@ const Carrito = () => {
 
   const eliminarDelCarrito = (id) => {
     setCarrito(prev => prev.filter(producto => producto.id !== id));
+  };
+
+  const vaciarCarrito = () => {
+    setCarrito([]);
   };
 
   const total = carrito.reduce((acc, item) => acc + item.price * item.cantidad, 0);
@@ -23,6 +28,22 @@ const Carrito = () => {
       </Container>
     );
   }
+
+  const handleConfirmar = () => {
+    Swal.fire({
+      title: '¿Confirmar compra?',
+      text: '¿Deseas confirmar los productos del carrito?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, confirmar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        vaciarCarrito();
+        Swal.fire('¡Compra confirmada!', 'Gracias por tu compra.', 'success');
+      }
+    });
+  };
 
   return (
     <Container className="mt-4">
@@ -58,6 +79,11 @@ const Carrito = () => {
         </tbody>
       </Table>
       <h5 className="text-end">Total a pagar: ${total.toFixed(2)}</h5>
+      <div className="text-end mt-3">
+        <Button variant="success" onClick={handleConfirmar}>
+          Confirmar productos
+        </Button>
+      </div>
     </Container>
   );
 };
