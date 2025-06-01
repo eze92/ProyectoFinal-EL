@@ -4,12 +4,20 @@ import ProductCard from './ProductCard';
 import Swal from 'sweetalert2';
 import { CartContext } from './CardContex';
 
-
-const ProductList = ({ sortType, typeFilter }) => {
+/**
+ * Componente que muestra una lista de cartas con paginación y permite agregar al carrito.
+ * Props:
+ * - sortType: 'cheap' | 'expensive'
+ * - typeFilter: string (tipo de carta)
+ * - currentPage: número de página actual
+ * - itemsPerPage: cantidad de cartas por página
+ */
+const ProductList = ({ sortType, typeFilter, currentPage = 1, itemsPerPage = 12 }) => {
   const [cartas, setCartas] = useState([]);
   const [loading, setLoading] = useState(true);
   const { agregarAlCarrito } = useContext(CartContext);
 
+  // Trae las cartas desde la API cada vez que cambia el filtro de tipo
   useEffect(() => {
     let url = 'https://api.pokemontcg.io/v2/cards?pageSize=100';
     if (typeFilter) {
@@ -22,6 +30,7 @@ const ProductList = ({ sortType, typeFilter }) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        // Transforma los datos de la API al formato que usamos
         const cartasTransformadas = data.data.map((card) => ({
           id: card.id,
           title: card.name,
@@ -40,6 +49,7 @@ const ProductList = ({ sortType, typeFilter }) => {
       });
   }, [typeFilter]);
 
+    // Muestra un aviso y agrega la carta al carrito
   const handleAgregarAlCarrito = (carta) => {
     agregarAlCarrito(carta); // agrega al carrito usando el contexto
     Swal.fire({
@@ -57,7 +67,7 @@ const ProductList = ({ sortType, typeFilter }) => {
     return <div>Loading...</div>;
   }
 
-  // Ordenar según sortType
+  // Ordenar según sortType  y filtra las cartas según el tipo de orden
   let cartasOrdenadas = [...cartas].filter(c => c.price !== 'N/A');
   if (sortType === 'cheap') {
     cartasOrdenadas.sort((a, b) => a.price - b.price);
@@ -67,9 +77,14 @@ const ProductList = ({ sortType, typeFilter }) => {
     cartasOrdenadas = cartasOrdenadas.slice(0, 100); // 100 más caras
   }
 
+   // Paginación: calcula qué cartas mostrar en la página actual
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const cartasPaginadas = cartasOrdenadas.slice(startIndex, endIndex);
+
   return (
     <Row>
-      {cartasOrdenadas.map((carta) => (
+      {cartasPaginadas.map((carta) => (
         <Col md={3} key={carta.id} className="mb-4">
           <ProductCard producto={carta} onAgregarAlCarrito={handleAgregarAlCarrito} />
         </Col>

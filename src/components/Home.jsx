@@ -2,10 +2,18 @@ import React, { useState } from 'react';
 import ProductList from './ProductList';
 import Banner from './Banner';
 
+// Lista de tipos de cartas 
 const types = ['Fire', 'Water', 'Grass', 'Lightning', 'Psychic', 'Fighting', 'Darkness', 'Metal', 'Fairy', 'Dragon', 'Colorless'];
 
 const Home = () => {
   const [selectedType, setSelectedType] = useState('');
+  //para paginacion
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
+
+
+  // Para saber cuántas cartas hay en total según el filtro y orden, puedes calcularlo aquí si tienes acceso a los datos.
+  // Si no, puedes calcular el total en ProductList y pasarlo a Home mediante un callback o prop.
 
   return (
     <div className="container" style={{ background: '#f5f7fa', borderRadius: '12px', padding: '2rem' }}>
@@ -32,7 +40,31 @@ const Home = () => {
           Todos
         </button>
       </div>
-      <ProductList sortType="expensive" typeFilter={selectedType} />
+      <ProductList 
+        sortType="expensive" 
+        typeFilter={selectedType} 
+        currentPage={currentPage}
+        itemsPerPage={itemsPerPage} 
+      />
+      {/* Paginación simple */}
+      <div className="d-flex justify-content-center mt-4">
+          <button
+            className="btn btn-outline-primary me-2"
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            Anterior
+          </button>
+          <span className="align-self-center">Página {currentPage}</span>
+          <button
+            className="btn btn-outline-primary ms-2"
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+            // Puedes deshabilitar el botón si no hay más cartas en la siguiente página
+            // disabled={currentPage === totalPages}
+          >
+            Siguiente
+          </button>
+        </div>
     </div>
   </div>
   );
