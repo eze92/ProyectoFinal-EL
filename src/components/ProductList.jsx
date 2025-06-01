@@ -60,6 +60,7 @@ const ProductList = ({ sortType, typeFilter, currentPage = 1, itemsPerPage = 20 
     showConfirmButton: false,
     toast: true,
     position: 'top-end',
+    width: '90%' // Hace que el toast sea más angosto en móvil
   });
 };
 

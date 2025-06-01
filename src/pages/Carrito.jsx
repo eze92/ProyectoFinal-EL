@@ -36,7 +36,8 @@ const Carrito = () => {
       icon: 'question',
       showCancelButton: true,
       confirmButtonText: 'Sí, confirmar',
-      cancelButtonText: 'Cancelar'
+      cancelButtonText: 'Cancelar',
+      width: '90%' // Hace que el toast sea más angosto en móvil
     }).then((result) => {
       if (result.isConfirmed) {
         vaciarCarrito();
