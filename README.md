@@ -7,6 +7,8 @@ Proyecto de e-commerce sencillo que se utiliza para el curso de React en Talento
 
 La web lista cartas de TCG Pokemon y permite agregarlos a un carrito para simular una compra. 
 
+Posee un login para que pueda entrar un usuario Administrador, usuario: admin pass: 1234
+
 ## Link
 
 La pagina se puede ver en el siguiente enlace https://project-react-tcgpokemon-eledesma.netlify.app/

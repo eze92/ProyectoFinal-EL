@@ -32,15 +32,14 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto align-items-center">
             {/* Enlaces de navegación principales alineados a la izquierda */}
-            <div className="d-flex align-items-center gap-3">
-              <Nav.Link as={Link} to="/" className="">Home</Nav.Link>
-              <Nav.Link as={Link} to="/ofertas" className="">Ofertas</Nav.Link>
-              <Nav.Link as={Link} to="/comojugar" className="">Como Jugar</Nav.Link>
-              {/* Solo mostrar el link de administración si el usuario es admin */}
-              {token && user === "admin" && (
-                <Nav.Link as={Link} to="/admin" className="">Administración</Nav.Link>
-              )}
-            </div>
+            {/* QUITA d-flex align-items-center para que en móvil se vean en columna */}
+            <Nav.Link as={Link} to="/" className="">Home</Nav.Link>
+            <Nav.Link as={Link} to="/ofertas" className="">Ofertas</Nav.Link>
+            <Nav.Link as={Link} to="/comojugar" className="">Como Jugar</Nav.Link>
+            {/* Solo mostrar el link de administración si el usuario es admin */}
+            {token && user === "admin" && (
+              <Nav.Link as={Link} to="/admin" className="">Administración</Nav.Link>
+            )}
             {/* Bloque de usuario y carrito */}
             <div className="d-flex align-items-center ms-4">
               {/* Si el usuario está logueado, muestra su nombre y el botón de cerrar sesión */}
