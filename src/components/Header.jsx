@@ -31,18 +31,25 @@ const Header = () => {
         {/* Collapse para menú responsive */}
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto align-items-center">
-            <Nav.Link as={Link} to="/" className="me-3">Home</Nav.Link>
-            <Nav.Link as={Link} to="/ofertas" className="me-3">Ofertas</Nav.Link>
-            <Nav.Link as={Link} to="/comojugar" className="me-3">Como Jugar</Nav.Link>
-
-            <div className="d-flex align-items-center">
+            {/* Enlaces de navegación principales alineados a la izquierda */}
+            <div className="d-flex align-items-center gap-3">
+              <Nav.Link as={Link} to="/" className="">Home</Nav.Link>
+              <Nav.Link as={Link} to="/ofertas" className="">Ofertas</Nav.Link>
+              <Nav.Link as={Link} to="/comojugar" className="">Como Jugar</Nav.Link>
+              {/* Solo mostrar el link de administración si el usuario es admin */}
+              {token && user === "admin" && (
+                <Nav.Link as={Link} to="/admin" className="">Administración</Nav.Link>
+              )}
+            </div>
+            {/* Bloque de usuario y carrito */}
+            <div className="d-flex align-items-center ms-4">
               {/* Si el usuario está logueado, muestra su nombre y el botón de cerrar sesión */}
               {token ? (
                 <>
                   <Navbar.Text className="me-3">
                     Usuario: <strong>{user}</strong>
                   </Navbar.Text>
-                  <Button variant="outline-light bg-danger text-white " onClick={handleLogout} className="me-2">
+                  <Button variant="outline-light bg-danger text-white" onClick={handleLogout} className="me-2">
                     Cerrar sesión
                   </Button>
                 </>
