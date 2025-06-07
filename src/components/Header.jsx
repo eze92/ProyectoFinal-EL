@@ -1,13 +1,21 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Navbar, Nav, Container, Button, Badge } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faGamepad } from '@fortawesome/free-solid-svg-icons';
 import { CartContext } from './CardContex';
+import { useAuth } from './AuthContext';
 
 const Header = () => {
   const { carrito } = useContext(CartContext);
   const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+  const { user, logout, token } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
 
   return (
     <Navbar bg="primary" variant="dark" expand="lg" className="mb-4">
@@ -28,14 +36,26 @@ const Header = () => {
             <Nav.Link as={Link} to="/comojugar" className="me-3">Como Jugar</Nav.Link>
 
             <div className="d-flex align-items-center">
-              {/* Botón de inicio de sesión */}
-              <Button variant="outline-light bg-danger text-white" as={Link} to="/login" className="me-2">
-                Login
-              </Button>
+              {/* Si el usuario está logueado, muestra su nombre y el botón de cerrar sesión */}
+              {token ? (
+                <>
+                  <Navbar.Text className="me-3">
+                    Usuario: <strong>{user}</strong>
+                  </Navbar.Text>
+                  <Button variant="outline-light bg-danger text-white " onClick={handleLogout} className="me-2">
+                    Cerrar sesión
+                  </Button>
+                </>
+              ) : (
+                // Botón de inicio de sesión
+                <Button variant="outline-light bg-danger text-white" as={Link} to="/login" className="me-2">
+                  Login
+                </Button>
+              )}
               {/* Carrito de compras */}
               <Link to="/carrito" className="text-muted position-relative">
                 <FontAwesomeIcon icon={faShoppingCart} size="lg" />
-                {/*maneja el total en el icono del carrito*/}
+                {/* Maneja el total en el icono del carrito */}
                 {totalItems > 0 && (
                   <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle">
                     {totalItems}
