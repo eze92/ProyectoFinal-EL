@@ -64,7 +64,7 @@ const Home = () => {
             className="btn btn-outline-primary ms-2"
             onClick={() => setCurrentPage((prev) => prev + 1)}
             // Deshabilitar el botón si no hay más cartas en la siguiente página
-            // disabled={currentPage === totalPages}
+             disabled={currentPage === totalPages}
           >
             Siguiente
           </button>
