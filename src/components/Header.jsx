@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { Navbar, Nav, Container, Button, Badge } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faGamepad } from '@fortawesome/free-solid-svg-icons';
+import { faGamepad, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { CartContext } from './CardContex';
 import { useAuth } from './AuthContext';
 
@@ -42,12 +42,23 @@ const Header = () => {
             )}
             {/* Bloque de usuario y carrito */}
             <div className="d-flex align-items-center ms-4">
-              {/* Si el usuario está logueado, muestra su nombre y el botón de cerrar sesión */}
+              {/* Si el usuario está logueado, muestra su nombre, link a perfil y el botón de cerrar sesión */}
               {token ? (
                 <>
                   <Navbar.Text className="me-3">
                     Usuario: <strong>{user}</strong>
                   </Navbar.Text>
+                  {/* Link al perfil solo si NO es admin */}
+                  {user !== "admin" && (
+                    <Button
+                      variant="success text-white"
+                      as={Link}
+                      to={`/perfil/${user}`}
+                      className="me-2"
+                    >
+                      Perfil
+                    </Button>
+                  )}
                   <Button variant="outline-light bg-danger text-white" onClick={handleLogout} className="me-2">
                     Cerrar sesión
                   </Button>
@@ -61,7 +72,7 @@ const Header = () => {
               {/* Carrito de compras */}
               <Link to="/carrito" className="text-muted position-relative">
                 <FontAwesomeIcon icon={faShoppingCart} size="lg" />
-                {/* Maneja el total en el icono del carrito */}
+                {/* Mostrar badge solo si hay productos en el carrito */}
                 {totalItems > 0 && (
                   <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle">
                     {totalItems}

@@ -2,9 +2,13 @@ import React, { useContext } from 'react';
 import { Container, Table, Button } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import { CartContext } from '../components/CardContex';
+// importar useAuth para obtener el usuario actual
+import { useAuth } from '../components/AuthContext';
 
 const Carrito = () => {
   const { carrito, setCarrito } = useContext(CartContext);
+  // obtener usuario actual
+  const { user } = useAuth();
 
   const eliminarDelCarrito = (id) => {
     setCarrito(prev => prev.filter(producto => producto.id !== id));
@@ -41,6 +45,17 @@ const Carrito = () => {
       width: '90%' // Hace que el toast sea más angosto en móvil
     }).then((result) => {
       if (result.isConfirmed) {
+        // guardar historial de compras en localStorage por usuario
+        const historial = JSON.parse(localStorage.getItem(`historial_${user}`)) || [];
+        const nuevaCompra = {
+          fecha: new Date().toLocaleString(),
+          productos: carrito,
+          total
+        };
+        historial.push(nuevaCompra);
+        localStorage.setItem(`historial_${user}`, JSON.stringify(historial));
+        // Fin de historial
+
         vaciarCarrito();
         Swal.fire('¡Compra confirmada!', 'Gracias por tu compra.', 'success');
       }

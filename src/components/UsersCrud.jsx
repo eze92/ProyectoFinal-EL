@@ -88,18 +88,21 @@ const UsersCrud = () => {
     }
   };
 
+  //abre formulario modal 
   const openCreateModal = () => {
     setModalMode("create");
     setCurrentItem({ name: "", username: "", password: "" });
     setShowModal(true);
   };
 
+  //edita formulario modal
   const openEditModal = (usuario) => {
     setModalMode("edit");
     setCurrentItem(usuario);
     setShowModal(true);
   };
 
+  //cierra formulario modal
   const handleCloseModal = () => {
     setShowModal(false);
   };

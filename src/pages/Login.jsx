@@ -21,10 +21,14 @@ export default function Login() {
         title: '¡Bienvenido!',
         text: 'Has iniciado sesión correctamente.',
         confirmButtonColor: '#3085d6'
-      }).then(() => {
-      // Redirige al perfil del usuario autenticado
-        navigate(`/perfil/${user}`);
-      });
+        }).then(() => {
+      // Redirige según el tipo de usuario después de cerrar el SweetAlert
+      if (user === "admin") {
+        navigate('/admin');
+      } else {
+        navigate(`/`);
+      }
+    });
     } else {
       setError("Usuario o contraseña inválidos");
     }
