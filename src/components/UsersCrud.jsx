@@ -115,7 +115,7 @@ const UsersCrud = () => {
       {loading ? (
         <p>Cargando...</p>
       ) : (
-        <Table striped bordered hover>
+        <Table striped bordered hover responsive>
           <thead>
             <tr>
               <th>ID</th>
