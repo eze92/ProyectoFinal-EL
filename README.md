@@ -3,20 +3,22 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/50524954-6da3-4a04-bbcf-b8935364dc13/deploy-status)](https://app.netlify.com/projects/project-react-tcgpokemon-eledesma/deploys)
 
 
-Proyecto de e-commerce sencillo que se utiliza para el curso de React en Talento Tech
+Proyecto de e-commerce responsive sencillo que se utiliza para proyecto final del curso de React en Talento Tech
 
 La web lista cartas de TCG Pokemon y permite agregarlos a un carrito para simular una compra. 
 
 Posee un login para que pueda entrar un usuario Administrador, usuario: admin pass: 1234 , al estar logeado como 
 tal permite hacer un crud de nuevos usuarios. Para realizar esto se uso mockapi para simular el impacto en db.
+Los usuarios creados tambien podran acceder con el mismo.
 
 ## Funcionalidad
 
 - Ver una lista de cartas 
 - Filtrar por tipo
 - Ver el carrito con los productos cargados con su cantidad y precio
-- Confirmar la compra con una devolución de un ID de compra
-- Login para usuario admi y creacion de nuevos usuarios
+- Confirmar la compra 
+- Login para usuario Administrador y en este hacer un crud de nuevos usuarios
+- Los usuarios logeados podran ver en su perfil el historial de compra realizada
 
 
 ## Link
