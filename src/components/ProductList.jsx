@@ -59,8 +59,8 @@ const ProductList = ({ sortType, typeFilter, currentPage = 1, itemsPerPage = 20 
     timer: 2000,
     showConfirmButton: false,
     toast: true,
-    position: 'top-end'
-    //width: '90%' // Hace que el toast sea más angosto en móvil
+    position: window.innerWidth < 600 ? 'top' : 'top-end', // Cambia posición en mobile
+    width: window.innerWidth < 600 ? '90vw' : undefined    // Más ancho en mobile
   });
 };
 

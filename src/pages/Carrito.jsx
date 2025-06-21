@@ -42,7 +42,8 @@ const Carrito = () => {
       showCancelButton: true,
       confirmButtonText: 'Sí, confirmar',
       cancelButtonText: 'Cancelar',
-      width: '90%' // Hace que el toast sea más angosto en móvil
+      position: 'center', // Centrado en todas las pantallas
+      width: window.innerWidth < 600 ? '90vw' : undefined // Más ancho en mobile
     }).then((result) => {
       if (result.isConfirmed) {
         // guardar historial de compras en localStorage por usuario
@@ -57,7 +58,13 @@ const Carrito = () => {
         // Fin de historial
 
         vaciarCarrito();
-        Swal.fire('¡Compra confirmada!', 'Gracias por tu compra.', 'success');
+        Swal.fire({
+          title: '¡Compra confirmada!',
+          text: 'Gracias por tu compra.',
+          icon: 'success',
+          position: 'center',
+          width: window.innerWidth < 600 ? '90vw' : undefined // También más ancho en mobile
+        });
       }
     });
   };
@@ -97,7 +104,17 @@ const Carrito = () => {
       </Table>
       <h5 className="text-end">Total a pagar: ${total.toFixed(2)}</h5>
       <div className="text-end mt-3">
-        <Button variant="success" onClick={handleConfirmar}>
+        <Button
+          variant="primary"
+          className="me-2"
+          onClick={vaciarCarrito}
+        >
+          Vaciar carrito
+        </Button>
+        <Button
+          variant="success"
+          onClick={handleConfirmar}
+        >
           Confirmar productos
         </Button>
       </div>
