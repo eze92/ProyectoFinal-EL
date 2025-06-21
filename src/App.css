@@ -51,16 +51,4 @@
   table {
     font-size: 0.95em;
   }
-   .navbar-brand.d-flex {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 0.2em;
-  }
-  .navbar-brand .fa-gamepad {
-    margin-right: 0 !important;
-    margin-bottom: 0.2em;
-  }
-  .navbar-brand span {
-    font-size: 1rem;
-  }
 }

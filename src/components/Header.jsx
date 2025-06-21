@@ -45,9 +45,9 @@ const Header = () => {
               {/* Si el usuario está logueado, muestra su nombre, link a perfil y el botón de cerrar sesión */}
               {token ? (
                 <>
-                  <Navbar.Text className="me-3">
+                {/*  <Navbar.Text className="me-3">
                     Usuario: <strong>{user}</strong>
-                  </Navbar.Text>
+                  </Navbar.Text>*/}
                   {/* Link al perfil solo si NO es admin */}
                   {user !== "admin" && (
                     <Button
