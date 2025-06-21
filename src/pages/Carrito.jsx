@@ -29,6 +29,7 @@ const Carrito = () => {
     );
   }
 
+  //confirmacion
   const handleConfirmar = () => {
     Swal.fire({
       title: '¿Confirmar compra?',

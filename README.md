@@ -8,8 +8,16 @@ Proyecto de e-commerce sencillo que se utiliza para el curso de React en Talento
 La web lista cartas de TCG Pokemon y permite agregarlos a un carrito para simular una compra. 
 
 Posee un login para que pueda entrar un usuario Administrador, usuario: admin pass: 1234 , al estar logeado como 
-tal permite hacer un crud de nuevos usuarios. Para realizar esto se uso mockapi para simular el impacto en db 
-el link es el siguiente https://mockapi.io/projects/684d83f765ed0871391657f9
+tal permite hacer un crud de nuevos usuarios. Para realizar esto se uso mockapi para simular el impacto en db.
+
+## Funcionalidad
+
+- Ver una lista de cartas 
+- Filtrar por tipo
+- Ver el carrito con los productos cargados con su cantidad y precio
+- Confirmar la compra con una devolución de un ID de compra
+- Login para usuario admi y creacion de nuevos usuarios
+
 
 ## Link
 
