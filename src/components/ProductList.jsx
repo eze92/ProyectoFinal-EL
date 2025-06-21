@@ -58,7 +58,7 @@ const ProductList = ({ sortType, typeFilter, currentPage = 1, itemsPerPage = 20 
     icon: 'success',
     timer: 2000,
     showConfirmButton: false,
-    toast: true,
+    toast: window.innerWidth >= 600, // Solo toast en desktop
     position: window.innerWidth < 600 ? 'top' : 'top-end', // Cambia posición en mobile
     width: window.innerWidth < 600 ? '90vw' : undefined    // Más ancho en mobile
   });

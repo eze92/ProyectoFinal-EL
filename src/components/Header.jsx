@@ -22,7 +22,10 @@ const Header = () => {
       <Container>
         <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
           <FontAwesomeIcon icon={faGamepad} size="2x" className="me-2" />
-          <span>PokéBazar Mercado Especializado en Cartas </span>
+          {/* Título largo solo en desktop */}
+          <span className="d-none d-lg-inline">PokéBazar Mercado Especializado en Cartas</span>
+          {/* Título corto solo en mobile */}
+          <span className="d-inline d-lg-none">PokéBazar</span>
         </Navbar.Brand>
         {/* Botón hamburguesa con texto "Menú" visible solo en pantallas chicas */}
         <Navbar.Toggle aria-controls="basic-navbar-nav">
