@@ -21,7 +21,7 @@ const Home = () => {
     <div className="container" style={{ background: '#f5f7fa', borderRadius: '12px', padding: '2rem' }}>
       <div className="container">
         <Banner />
-        <h2>Top Cartas más Caras</h2>
+        <h2>Catalogo de Cartas</h2>
         <div className="mb-3">
           <span>Filtrar Tipo de Carta: </span>
           {types.map((type) => (
