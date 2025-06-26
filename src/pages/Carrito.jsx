@@ -75,7 +75,8 @@ const Carrito = () => {
       <Table striped bordered hover responsive className="mt-3">
         <thead>
           <tr>
-            <th>Producto</th>
+            <th>Imagen</th> {/* Nuevo: columna para la imagen */}
+            <th>Carta</th>
             <th>Precio unitario</th>
             <th>Cantidad</th>
             <th>Total</th>
@@ -85,6 +86,13 @@ const Carrito = () => {
         <tbody>
           {carrito.map((item) => (
             <tr key={item.id}>
+              <td className="text-center">
+          <img
+            src={item.image}
+            alt={item.title}
+            style={{ width: 48, height: 48, objectFit: 'contain' }}
+          />
+        </td>
               <td>{item.title}</td>
               <td>${item.price.toFixed(2)}</td>
               <td>{item.cantidad}</td>
