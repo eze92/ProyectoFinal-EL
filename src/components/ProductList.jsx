@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import ProductCard from './ProductCard';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2'; // Comentado: ya no se usa el aviso
 import { CartContext } from './CardContex';
 
 /**
@@ -17,6 +17,9 @@ const ProductList = ({ sortType, typeFilter, currentPage = 1, itemsPerPage = 20,
   const [cartas, setCartas] = useState([]);
   const [loading, setLoading] = useState(true);
   const { agregarAlCarrito } = useContext(CartContext);
+
+  // Nuevo: Estado para llevar la cantidad agregada de cada carta
+  const [cantidades, setCantidades] = useState({});
 
   // Trae las cartas desde la API cada vez que cambia el filtro de tipo
   useEffect(() => {
@@ -74,19 +77,23 @@ const ProductList = ({ sortType, typeFilter, currentPage = 1, itemsPerPage = 20,
     }
   }, [cartasOrdenadas.length, onTotalChange]);
 
-  // Muestra un aviso y agrega la carta al carrito
+  // Cambiado: ahora suma la cantidad agregada y NO muestra aviso
   const handleAgregarAlCarrito = (carta) => {
     agregarAlCarrito(carta); // agrega al carrito usando el contexto
-    Swal.fire({
-      title: '¡Agregado!',
-      text: `La carta ${carta.title} fue agregada al carrito.`,
-      icon: 'success',
-      timer: 2000,
-      showConfirmButton: false,
-      toast: window.innerWidth >= 600, // Solo toast en desktop
-      position: window.innerWidth < 600 ? 'center' : 'top-end', // Centrado en mobile
-      width: window.innerWidth < 600 ? '90vw' : undefined // Más ancho en mobile
-    });
+    setCantidades((prev) => ({
+      ...prev,
+      [carta.id]: (prev[carta.id] || 0) + 1,
+    }));
+    // Swal.fire({
+    //   title: '¡Agregado!',
+    //   text: `La carta ${carta.title} fue agregada al carrito.`,
+    //   icon: 'success',
+    //   timer: 2000,
+    //   showConfirmButton: false,
+    //   toast: window.innerWidth >= 600, // Solo toast en desktop
+    //   position: window.innerWidth < 600 ? 'center' : 'top-end', // Centrado en mobile
+    //   width: window.innerWidth < 600 ? '90vw' : undefined // Más ancho en mobile
+    // });
   };
 
   // después de todos los hooks, puedes retornar según loading o cartas
@@ -99,7 +106,16 @@ const ProductList = ({ sortType, typeFilter, currentPage = 1, itemsPerPage = 20,
       {cartasPaginadas.length > 0 ? (
         cartasPaginadas.map((carta) => (
           <Col md={3} key={carta.id} className="mb-4">
-            <ProductCard producto={carta} onAgregarAlCarrito={handleAgregarAlCarrito} />
+            <ProductCard
+              producto={carta}
+              onAgregarAlCarrito={handleAgregarAlCarrito}
+              cantidadAgregada={cantidades[carta.id] || 0} // Pasa la cantidad a la card
+            />
+            {/* Antes se podía mostrar aquí la cantidad:
+            <div className="text-center">
+              Agregados: {cantidades[carta.id] || 0}
+            </div>
+            */}
           </Col>
         ))
       ) : (

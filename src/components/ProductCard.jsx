@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button,Badge } from 'react-bootstrap';
 
-const ProductCard = ({ producto, onAgregarAlCarrito }) => (
-  <Card className="h-100 d-flex flex-column m-2"  style={{ backgroundColor: '#999CF5' }}>
+const ProductCard = ({ producto, onAgregarAlCarrito, cantidadAgregada }) => (
+  <Card className="h-100 d-flex flex-column m-2" style={{ backgroundColor: '#999CF5' }}>
     <Card.Img
       variant="top"
       src={producto.image}
@@ -20,6 +20,20 @@ const ProductCard = ({ producto, onAgregarAlCarrito }) => (
           Agregar al carrito
         </Button>
       </div>
+      {/* Nuevo: muestra la cantidad agregada solo si es mayor a 0 y en un campo de color */}
+       {cantidadAgregada > 0 && (
+        <div className="text-center mt-2">
+          <Badge bg="dark" style={{ fontSize: '1rem', padding: '0.5em 1em',fontWeight: 'normal' }}>
+            Agregados: {cantidadAgregada}
+          </Badge>
+        </div>
+      )}
+         
+      {/* Antes se mostraba siempre y sin color:
+      <div className="text-center mt-2">
+        Agregados: {cantidadAgregada}
+      </div>
+      */}
     </Card.Body>
   </Card>
 );
