@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProductList from './ProductList';
 import Banner from './Banner';
+import Paginador from './Paginador';
 
 const Ofertas = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,23 +24,13 @@ const Ofertas = () => {
         itemsPerPage={itemsPerPage}
         onTotalChange={setTotalCartas} // Pasa el setter
       />
-      <div className="d-flex justify-content-center mt-4">
-        <button
-          className="btn btn-outline-primary me-2"
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
-          Anterior
-        </button>
-        <span className="align-self-center">Página {currentPage}</span>
-        <button
-          className="btn btn-outline-primary ms-2"
-          onClick={() => setCurrentPage((prev) => prev + 1)}
-          disabled={currentPage === totalPages || totalPages === 0} // Desactiva si es la última
-        >
-          Siguiente
-        </button>
-      </div>
+      {/* Paginación simple usando el componente Paginador */}
+      <Paginador
+        paginaActual={currentPage}
+        totalPaginas={totalPages}
+        cambiarPagina={(pagina) => setCurrentPage(Math.max(1, Math.min(pagina, totalPages)))}
+      />
+      
     </div>
   );
 };
