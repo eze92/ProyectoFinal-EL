@@ -30,7 +30,7 @@ const ProductList = ({ sortType, typeFilter, currentPage = 1, itemsPerPage = 20,
     setLoading(true);
     fetch(url, {
       headers: {
-        'X-Api-Key': 'a46093c9-caec-4f2f-b2cc-15d55e6776d2',
+        'X-Api-Key': import.meta.env.VITE_POKEMON_API_KEY,
       },
     })
       .then((res) => res.json())
