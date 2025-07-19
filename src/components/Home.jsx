@@ -8,7 +8,7 @@ const types = ['Fire', 'Water', 'Grass', 'Lightning', 'Psychic', 'Fighting', 'Da
 const Home = () => {
   const [selectedType, setSelectedType] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 20;
+  const itemsPerPage = 16;
   // Nuevo: estado para el total de cartas filtradas
   const [totalCartas, setTotalCartas] = useState(0);
   // Nuevo: calcula el total de páginas
