@@ -5,7 +5,7 @@ import Paginador from './Paginador';
 
 const Ofertas = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = 16;
   const [totalCartas, setTotalCartas] = useState(0); // Nuevo estado
   const totalPages = Math.ceil(totalCartas / itemsPerPage); // Calcula total de páginas
 
